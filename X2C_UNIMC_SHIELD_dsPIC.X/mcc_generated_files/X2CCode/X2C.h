@@ -1,0 +1,90 @@
+/**
+ * @file
+ * @brief Generated model file.
+
+ * Date:  2018-02-25 15:45
+ * X2C-Version: 1116
+ */
+/* This file is part of X2C. http://www.mechatronic-simulation.org/                                                   */
+
+/* Model: X2C_UNIMC_SHIELD                                                                                            */
+/* Date:  2018-02-25 15:45                                                                                            */
+
+/* X2C-Version: 1116                                                                                                  */
+
+#ifndef __X2C_H__
+#define __X2C_H__
+
+/**********************************************************************************************************************/
+/**     Includes                                                                                                     **/
+/**********************************************************************************************************************/
+#include "Constant_FiP16.h"
+#include "Sin3Gen_FiP16.h"
+#include "Scope_Main.h"
+#include "CommonFcts.h"
+
+/**********************************************************************************************************************/
+/**     Defines                                                                                                      **/
+/**********************************************************************************************************************/
+#define FUNCTIONS CONSTANT_FIP16_FUNCTIONS , \
+                  SIN3GEN_FIP16_FUNCTIONS , \
+                  SCOPE_MAIN_FUNCTIONS 
+
+#define PARAMETER_TABLE { (uint16)1, &TAmplitude } , \
+                        { (uint16)2, &TSin3Gen } , \
+                        { (uint16)3, &TScope } , \
+                        { (uint16)4, &Inports.CURRENT_P1 } , \
+                        { (uint16)5, &Inports.CURRENT_P2 } , \
+                        { (uint16)6, &Inports.CURRENT_SUM } , \
+                        { (uint16)7, &Inports.MIC_FLT } , \
+                        { (uint16)8, &Inports.Pot } , \
+                        { (uint16)9, &Inports.Pot1 } , \
+                        { (uint16)10, &Inports.QEI } , \
+                        { (uint16)11, &Outports.pPhase1 } , \
+                        { (uint16)12, &Outports.pPhase2 } , \
+                        { (uint16)13, &Outports.pPhase3 } , \
+                        { (uint16)14, &Outports.pLED } 
+
+/**********************************************************************************************************************/
+/**     Typdefs                                                                                                      **/
+/**********************************************************************************************************************/
+
+/* Inport structure                                                                                                   */
+typedef struct 
+{
+    int16 Pot1;
+    int16 Pot;
+    int16 CURRENT_P1;
+    int16 MIC_FLT;
+    int16 CURRENT_P2;
+    int16 QEI;
+    int16 CURRENT_SUM;
+} TInports;
+
+/* Outport structure                                                                                                  */
+typedef struct 
+{
+    int16* pPhase1;
+    int16* pPhase2;
+    int16* pPhase3;
+    int16* pLED;
+} TOutports;
+
+/**********************************************************************************************************************/
+/**     Externals                                                                                                    **/
+/**********************************************************************************************************************/
+extern TInports Inports;
+extern TOutports Outports;
+extern const tBlockFunctions blockFunctionTable[];
+extern const tParameterTable parameterIdTable[];
+
+
+/**********************************************************************************************************************/
+/**     Prototypes                                                                                                   **/
+/**********************************************************************************************************************/
+void X2C_Init(void);
+void X2C_Update(void);
+void X2C_Update_1(void);
+
+
+#endif
